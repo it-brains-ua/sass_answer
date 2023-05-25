@@ -1,0 +1,11 @@
+@use './var.scss' as var;
+
+@mixin linkLight {
+    text-decoration: none;
+    color: var.color("colorLink");
+}
+
+@mixin linkDark {
+    text-decoration: none;
+    color: var.color("colorLink2");
+}
