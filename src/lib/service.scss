@@ -1,0 +1,65 @@
+@use "./variable.scss";
+
+@mixin hoverActive {
+    transition: opacity 0.7s;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &:active {
+        opacity: 0.3;
+    }
+}
+
+@mixin linkLight {
+    text-decoration: none;
+    color: color("colorLink");
+}
+
+@mixin linkDark {
+    text-decoration: none;
+    color: color("colorLinkDark");
+}
+
+@function screen($key: "default") {
+    @return map-get(variable.$screenMap, $key);
+}
+
+@function color($key) {
+    @return map-get(variable.$colorMap, $key);
+}
+
+@function spacing($num) {
+    @return $num * 4px;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    padding: 0 spacing(4);
+}
+
+.section__content {
+    max-width: 1200px;
+    width: 100%;
+
+    @each $key, $value in variable.$screenMap {
+        @media all and (width < $value) {
+            max-width: map-get(variable.$contentSizeMap, $key);
+        }
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media all and (width < screen("laptop")) {
+        grid-template-columns: 1fr;
+    }
+}
+
+@function fontSize($key: "default") {
+    @return map-get(variable.$fontSizeMap, $key);
+}
