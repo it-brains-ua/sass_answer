@@ -1,0 +1,210 @@
+@use "../../lib/service.scss" as service;
+@use "../../lib/variable.scss";
+
+.header {
+    @extend .section;
+    background-color: service.color("backgroundDark");
+}
+
+.header__content {
+    @extend .section__content;
+    display: flex;
+    padding: service.spacing(4) 0;
+    justify-content: space-between;
+}
+
+.header__block {
+    display: flex;
+    gap: service.spacing(8);
+    align-items: center;
+}
+
+.header__icon {
+    @include service.hoverActive;
+}
+
+.header__link {
+    color: service.color("whiteLight");
+    @include service.hoverActive;
+    font-size: service.fontSize("small");
+}
+
+.ad {
+    @extend .section__content;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: service.spacing(3) service.spacing(1);
+    color: service.color("colorText");
+    font-size: service.fontSize("medium");
+
+    @media all and (width < service.screen("tablet")) {
+        flex-direction: column;
+    }
+}
+
+.ad__link {
+    @include service.hoverActive;
+    @include service.linkLight;
+}
+
+.product {
+    @extend .section;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.product__content {
+    display: grid;
+    gap: service.spacing(5);
+    text-align: center;
+    align-content: center;
+}
+
+.product__title {
+    font-size: 56px;
+    font-weight: 700;
+    max-width: 336px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.product__description {
+    font-size: 28px;
+    max-width: 336px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.product__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include service.hoverActive;
+}
+
+.product__link {
+    @include service.hoverActive;
+    @include service.linkDark;
+}
+
+.product-big {
+    max-height: 700px;
+    height: 100vh;
+    padding-top: service.spacing(20);
+    background-size: cover;
+
+    @media all and (width < service.screen("tablet")) {
+        background-size: 150%;
+
+        max-height: 500px;
+    }
+}
+
+.product-small {
+    max-height: 580px;
+    height: 100vh;
+    padding-top: service.spacing(12);
+
+    background-size: cover;
+
+    .product__title {
+        font-size: 40px;
+    }
+
+    .product__description {
+        font-size: service.fontSize("large");
+    }
+
+    @media all and (width < service.screen("tablet")) {
+        background-size: 150%;
+
+        max-height: 500px;
+    }
+}
+
+.product--dark {
+    .product__title,
+    .product__description {
+        color: service.color("background");
+    }
+    background-color: #000;
+}
+
+.product--light {
+    .product__title,
+    .product__description {
+        color: service.color("colorText");
+    }
+    background-color: service.color("colorWhite");
+}
+
+.product--top {
+    .product__content {
+        align-content: flex-start;
+    }
+}
+
+.product--bottom {
+    .product__content {
+        align-content: flex-end;
+        padding-bottom: service.spacing(12);
+    }
+}
+
+.large {
+    font-size: service.fontSize("large");
+    gap: service.spacing(5);
+}
+
+$productImage: (
+    "iphone-pro" "/img/iphone-pro.png" #000,
+    "iphone" "/img/iphone.png" #fafafa,
+    "iwatch" "/img/iwatch.png" #000,
+    "trade_in" "/img/trade-in.png" #fbfbfd,
+    "conference" "/img/conference.png" #000,
+    "ipad" "/img/ipad.png" #fbfbfb,
+    "small-business" "/img/small-businesservice.png" #000,
+    "gift" "/img/gift.png" #fbfbfd,
+    "card" "/img/card.png" #fbfbfd
+);
+
+@each $class, $url, $color in $productImage {
+    .product--#{$class} {
+        background-image: url(#{$url});
+        background-color: $color;
+    }
+}
+
+.footer {
+    @extend .section__content;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 0 auto;
+    padding-top: service.spacing(10);
+    padding-bottom: service.spacing(10);
+    gap: service.spacing(4);
+    font-size: service.fontSize("small");
+
+    @media all and (width < service.screen("tablet")) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media all and (width < service.screen("mobile")) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.footer__title {
+    color: service.color("colorText");
+    font-weight: 600;
+    padding-bottom: service.spacing(4);
+    @include service.hoverActive;
+}
+
+.footer__link {
+    display: block;
+    color: #424245;
+    padding: service.spacing(2) 0;
+    @include service.hoverActive;
+}

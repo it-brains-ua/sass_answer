@@ -1,0 +1,30 @@
+$colorMap: (
+    background: #f5f5f7,
+    backgroundDark: #454545,
+    whiteLight: #dadada,
+    colorWhite: #fff,
+    colorText: #1d1d1f,
+    colorLink: #0066cc,
+    colorLinkDark: #2997ff,
+);
+
+$fontSizeMap: (
+    default: 16px,
+    small: 12px,
+    medium: 14px,
+    large: 20px,
+);
+
+$screenMap: (
+    desktop: 1440px,
+    laptop: 1260px,
+    tablet: 1000px,
+    mobile: 620px,
+);
+
+$contentSizeMap: (
+    desktop: 1100px,
+    laptop: 900px,
+    tablet: 700px,
+    mobile: 500px,
+);
